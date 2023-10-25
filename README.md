@@ -1,17 +1,45 @@
-# dogs_finder
+SOHEL PATHAN, sohelpathan6411@gmail.com
+```APK```
 
-A new Flutter project.
+//TODO: apk link to be added here
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+------------------------------------------------------------
+**Tech Stack:**
+Flutter 3.10.5 • channel stable • https://github.com/flutter/flutter.git
+Tools • Dart 3.0.5 • DevTools 2.23.1
+------------------------------------------------------------
 
-A few resources to get you started if this is your first Flutter project:
+**Git Repository:**
+https://github.com/sohelpathan6411/dogs_finder.git
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+------------------------------------------------------------
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# dogs_finder
+**Requirements:**
+
+Android Studio
+VS Code
+Emulator/Simulator
+
+------------------------------------------------------------
+
+**Commands to run the app:**
+
+flutter clean
+flutter pub get
+flutter run   
+
+------------------------------------------------------------
+
+**libs Used:**
+  cupertino_icons: 
+  get: //state management
+  dartz:  //Either wrapper api calls
+  dio:  // Http client for rest apis calls
+  internet_connection_checker: // Data connection validator on request calls
+  shimmer: // Placeholder views
+  cached_network_image: //avoid reloading of images by cache
+  
+------------------------------------------------------------  
+
+//TODO: Project structure to be added here
