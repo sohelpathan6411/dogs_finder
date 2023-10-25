@@ -1,1 +1,1 @@
-const dogImage = "assets/imgs/sample.png";
+const loadingImage = "assets/gifs/loading.gif";

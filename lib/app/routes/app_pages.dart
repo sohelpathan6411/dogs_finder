@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
+import 'package:dogs_finder/app/modules/splash/views/splash_view.dart';
 import 'package:get/get.dart';
+
+import '../modules/splash/bindings/splash_binding.dart';
 
 // ignore_for_file: constant_identifier_names
 
@@ -10,7 +12,9 @@ class AppPages {
 
   static final routes = [
     GetPage(
-        name: _Paths.SPLASH, page: () => const SizedBox() //const SplashView(),
-        ),
+      name: _Paths.SPLASH,
+      page: () => const SplashView(),
+      binding: SplashBinding(),
+    ),
   ];
 }

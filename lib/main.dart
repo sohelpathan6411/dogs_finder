@@ -1,3 +1,5 @@
+import 'package:dogs_finder/app/modules/splash/bindings/splash_binding.dart';
+import 'package:dogs_finder/core/themes/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:get/utils.dart';
@@ -22,15 +24,19 @@ class MyApp extends StatelessWidget {
       locale: const Locale('en', 'US'),
       theme: ThemeData(
           useMaterial3: true,
-          colorScheme: ColorScheme.fromSeed(seedColor: primary),
+          colorScheme:
+              ColorScheme.fromSeed(seedColor: primary, background: colorWhite),
           fontFamily: 'Oswald',
-          appBarTheme:
-              const AppBarTheme(color: Colors.transparent, elevation: 0.0),
+          appBarTheme: const AppBarTheme(
+              color: primary,
+              titleTextStyle: TextStyles.kTSNFS16W600,
+              elevation: 0.0),
           floatingActionButtonTheme:
               const FloatingActionButtonThemeData(backgroundColor: primary)),
       debugShowCheckedModeBanner: false,
       initialRoute: Routes.SPLASH,
       getPages: AppPages.routes,
+      initialBinding: SplashBinding(),
     );
   }
 }
