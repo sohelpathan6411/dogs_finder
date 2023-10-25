@@ -18,20 +18,22 @@ class AssetImageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      image!,
-      width: width,
-      height: height,
-      fit: fitBox,
-      color: colorImg,
-      errorBuilder: (context, error, stacktrace) {
-        return Image.asset(
-          loadingImage,
-          fit: fitBox,
-          width: width,
-          height: height,
-        );
-      },
+    return Center(
+      child: Image.asset(
+        image!,
+        width: width,
+        height: height,
+        fit: fitBox,
+        color: colorImg,
+        errorBuilder: (context, error, stacktrace) {
+          return Image.asset(
+            loadingImage,
+            fit: fitBox,
+            width: width,
+            height: height,
+          );
+        },
+      ),
     );
   }
 }

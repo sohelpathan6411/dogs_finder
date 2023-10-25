@@ -1,11 +1,10 @@
 import 'package:dogs_finder/core/consts/color_consts.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CustomSnackbars {
   void showSuccessSnack({title, message}) {
     Get.snackbar(title.toString(), message.toString(),
-        snackPosition: SnackPosition.TOP, backgroundColor: Colors.green);
+        snackPosition: SnackPosition.TOP, backgroundColor: colorGreen);
   }
 
   void showErrorSnack({title, message}) {
@@ -13,7 +12,7 @@ class CustomSnackbars {
       title.toString(),
       message.toString(),
       snackPosition: SnackPosition.TOP,
-      backgroundColor: Colors.redAccent,
+      backgroundColor: colorRed,
       colorText: colorWhite,
     );
   }

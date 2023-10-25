@@ -1,1 +1,1 @@
-const String requesting = 'Requesting';
+const int imageCount = 10;

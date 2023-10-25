@@ -24,11 +24,13 @@ class MyApp extends StatelessWidget {
       locale: const Locale('en', 'US'),
       theme: ThemeData(
           useMaterial3: true,
-          colorScheme:
-              ColorScheme.fromSeed(seedColor: primary, background: colorWhite),
+          colorScheme: const ColorScheme.light(
+            secondary: secondary,
+            primary: primary,
+          ),
           fontFamily: 'Oswald',
           appBarTheme: const AppBarTheme(
-              color: primary,
+              backgroundColor: colorWhite,
               titleTextStyle: TextStyles.kTSNFS16W600,
               elevation: 0.0),
           floatingActionButtonTheme:

@@ -9,5 +9,6 @@ enum ApiStatus { LOADING, SUCCESS, FAIL }
 class BaseController extends GetxController {
   late DioClient dioClient = DioClient().init();
 
-  var apiStatus = ApiStatus.SUCCESS.obs;
+  var randomImageStatus = ApiStatus.SUCCESS.obs;
+  var imagesListStatus = ApiStatus.SUCCESS.obs;
 }

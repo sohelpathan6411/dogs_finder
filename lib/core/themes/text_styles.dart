@@ -8,6 +8,12 @@ class TextStyles {
       fontWeight: FontWeight.normal,
       letterSpacing: 1);
 
+  static const TextStyle kTSNFS14W700 = TextStyle(
+      color: primary,
+      fontSize: 14,
+      fontWeight: FontWeight.w700,
+      letterSpacing: 1);
+
   static const TextStyle kTSNFS16 = TextStyle(
       color: primary,
       fontSize: 16,

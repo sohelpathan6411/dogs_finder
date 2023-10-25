@@ -1,5 +1,4 @@
 //DOG APIs
-const String baseUrl = "dogs domain";
+const String baseUrl = "https://dog.ceo/api";
 
-const String randomImageUrl = '';
-const String randomImageByBreedUrl = '';
+const String getBreedsUrl = '/breeds/list/all';

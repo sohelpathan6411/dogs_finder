@@ -7,72 +7,63 @@ import '../../consts/color_consts.dart';
 class Shimmers {
   getListShimmer({count = 10}) {
     return Shimmer.fromColors(
-        baseColor: primary.withOpacity(0.6),
-        highlightColor: primary.withOpacity(0.3),
-        child: ListView.builder(
+        baseColor: primary.withOpacity(0.2),
+        highlightColor: primary.withOpacity(0.4),
+        child: SizedBox(
+          height: Get.size.height / 4.4,
+          width: Get.size.width / 2,
+          child: ListView.builder(
             itemCount: count,
             shrinkWrap: true,
-            itemBuilder: (context, index) => Card(
-                  elevation: 12.0,
-                  shadowColor: primary,
-                  child: Container(
-                    height: 100.0,
-                    color: colorRed,
-                    margin: const EdgeInsets.all(16.0),
-                  ),
-                )));
-  }
-
-  getBannerShimmer() {
-    return Shimmer.fromColors(
-        baseColor: primary.withOpacity(0.6),
-        highlightColor: primary.withOpacity(0.3),
-        child: Card(
-          elevation: 12.0,
-          shadowColor: primary,
-          child: Container(
-            height: Get.width,
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(
-                Radius.circular(16),
+            scrollDirection: Axis.vertical,
+            itemBuilder: (context, index) => Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                color: primary.withOpacity(0.4),
+                height: Get.size.height / 4.4,
+                width: Get.size.width / 2,
               ),
-              color: Colors.white.withOpacity(0.1),
             ),
-            margin: const EdgeInsets.all(16.0),
           ),
         ));
   }
 
-  getBottomMenuShimmer() {
+  getGridShimmer({count = 10}) {
     return Shimmer.fromColors(
-        baseColor: primary.withOpacity(0.6),
-        highlightColor: primary.withOpacity(0.3),
-        child: Container(
-          height: 75.0,
-          width: Get.width,
-          decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(
-              Radius.circular(16),
+        baseColor: primary.withOpacity(0.2),
+        highlightColor: primary.withOpacity(0.4),
+        child: SizedBox(
+          width: double.infinity,
+          child: GridView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              childAspectRatio: Get.size.aspectRatio * 2.2,
+              crossAxisCount: 2,
             ),
-            color: Colors.white.withOpacity(0.1),
+            itemCount: count,
+            scrollDirection: Axis.vertical,
+            itemBuilder: (context, index) => Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                color: primary.withOpacity(0.4),
+                height: double.infinity,
+                width: double.infinity,
+              ),
+            ),
           ),
-          margin: const EdgeInsets.all(16.0),
         ));
   }
 
   getShimmerItem({child}) {
     return Shimmer.fromColors(
         child: child ??
-            Card(
-              elevation: 12.0,
-              shadowColor: primary,
-              child: Container(
-                height: 100.0,
-                color: colorRed,
-                margin: const EdgeInsets.all(16.0),
-              ),
+            Container(
+              height: Get.size.height / 2.2,
+              width: Get.size.width,
+              color: primary.withOpacity(0.4),
             ),
-        baseColor: primary.withOpacity(0.6),
-        highlightColor: primary.withOpacity(0.3));
+        baseColor: primary.withOpacity(0.2),
+        highlightColor: primary.withOpacity(0.4));
   }
 }
