@@ -34,7 +34,7 @@ class DashboardView extends GetView<DashboardController> {
                   child: Text("pull_to_refresh".tr,
                       textAlign: TextAlign.start,
                       style: TextStyles.kTSNFS14
-                          .copyWith(color: primary.withOpacity(0.3))),
+                          .copyWith(color: fontColor.withOpacity(0.3))),
                 ),
                 const BreedListView(),
                 const RandomImageView(),

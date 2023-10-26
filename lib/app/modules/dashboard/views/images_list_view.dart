@@ -32,16 +32,19 @@ class ImagesListView extends GetView<DashboardController> {
                       ),
                     ),
                     if (controller.selectedSubBreed.isNotEmpty)
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                right: 15, top: 15, bottom: 15),
-                            child: Text(" / ${controller.selectedSubBreed}",
-                                textAlign: TextAlign.start,
-                                style: TextStyles.kTSNFS18W400),
-                          ),
-                        ],
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            right: 15, top: 15, bottom: 15),
+                        child: Text(" / ${controller.selectedSubBreed}",
+                            textAlign: TextAlign.start,
+                            style: TextStyles.kTSNFS18W400),
+                      ),
+                    if (controller.imagesList.value.message != null &&
+                        controller.imagesList.value.message!.isNotEmpty)
+                      Text(
+                        " (${controller.imagesList.value.message!.length})",
+                        textAlign: TextAlign.start,
+                        style: TextStyles.kTSNFS16W400,
                       ),
                   ],
                 ),
@@ -101,7 +104,7 @@ class ImagesListView extends GetView<DashboardController> {
                                       child: Text("reached_end".tr,
                                           textAlign: TextAlign.center,
                                           style: TextStyles.kTSNFS16W400
-                                              .copyWith(color: primary)),
+                                              .copyWith(color: fontColor)),
                                     ),
                                   )
                               ],

@@ -1,5 +1,6 @@
 import 'package:dogs_finder/core/consts/color_consts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../../../core/themes/text_styles.dart';
@@ -32,7 +33,7 @@ class SubBreedListView extends GetView<DashboardController> {
                 ),
               ),
               SizedBox(
-                height: 55,
+                height: 55.h,
                 width: double.infinity,
                 child: ListView.builder(
                   itemCount: subBreedList.length,
@@ -52,13 +53,13 @@ class SubBreedListView extends GetView<DashboardController> {
                           },
                           child: Container(
                             decoration: BoxDecoration(
-                                color: colorWhite,
+                                color: bgColor,
                                 border: Border.all(
                                     width: item.toString() ==
                                             controller.selectedSubBreed.value
                                         ? 0.8
                                         : 0.2,
-                                    color: primary),
+                                    color: fontColor),
                                 borderRadius:
                                     const BorderRadius.all(Radius.circular(8))),
                             padding: const EdgeInsets.symmetric(

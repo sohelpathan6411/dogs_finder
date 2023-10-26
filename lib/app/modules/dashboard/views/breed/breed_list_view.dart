@@ -1,9 +1,11 @@
 import 'package:dogs_finder/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:dogs_finder/core/consts/color_consts.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../../../core/themes/text_styles.dart';
+import '../../../../../core/utils/widget_utils/search_selection_dialog_view.dart';
 import '../../../splash/controllers/splash_controller.dart';
 import 'sub_breed_list_view.dart';
 
@@ -18,20 +20,57 @@ class BreedListView extends GetView<DashboardController> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (breedModel.value.message!.isNotEmpty)
-            Padding(
-              padding: const EdgeInsets.only(left: 15, top: 15),
-              child: Text(
-                'breeds'.tr,
-                textAlign: TextAlign.start,
-                style: TextStyles.kTSNFS18W600,
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 15, top: 15),
+                  child: Row(
+                    children: [
+                      Text(
+                        'breeds'.tr,
+                        textAlign: TextAlign.start,
+                        style: TextStyles.kTSNFS18W600,
+                      ),
+                      Text(
+                        " (${breedModel.value.message!.entries.length})",
+                        textAlign: TextAlign.start,
+                        style: TextStyles.kTSNFS16W400,
+                      ),
+                    ],
+                  ),
+                ),
+                InkWell(
+                  onTap: () async {
+                    var item = await Get.dialog(SearchSelectionDialogView(
+                      items: breedModel.value.message!.entries
+                          .map((e) => e.key)
+                          .toList(),
+                      searchHint: 'breeds'.tr,
+                      title: 'breeds'.tr,
+                    ));
+                    if (item != null) {
+                      controller.onBreedSelection(item.toString(), '');
+                    }
+                  },
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.only(right: 20, top: 15, left: 15),
+                    child: Icon(
+                      Icons.search,
+                      color: primary,
+                      size: 26.w,
+                    ),
+                  ),
+                ),
+              ],
             ),
           breedModel.value.message!.isEmpty
               ? const SizedBox()
               : Column(
                   children: [
                     SizedBox(
-                      height: 55,
+                      height: 55.h,
                       child: ListView.builder(
                         itemCount: breedModel.value.message!.entries.length,
                         scrollDirection: Axis.horizontal,
@@ -50,13 +89,13 @@ class BreedListView extends GetView<DashboardController> {
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
-                                      color: colorWhite,
+                                      color: bgColor,
                                       border: Border.all(
                                           width: item.key.toString() ==
                                                   controller.selectedBreed.value
                                               ? 0.8
                                               : 0.2,
-                                          color: primary),
+                                          color: fontColor),
                                       borderRadius: const BorderRadius.all(
                                           Radius.circular(8))),
                                   padding: const EdgeInsets.symmetric(
