@@ -10,21 +10,40 @@ class SplashView extends GetView<SplashController> {
   const SplashView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
-          child: Column(
+          child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          AssetImageView(
-            height: Get.size.width / 2,
-            image: loadingImage,
+          Expanded(
+            flex: 1,
+            child: AssetImageView(
+              image: loadingImage,
+            ),
           ),
-          const Text(
-            "Hi, I'm Loopy\n. . .",
-            textAlign: TextAlign.center,
-            style: TextStyles.kTSNFS26W600,
-          )
+          Expanded(
+            flex: 1,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Hi, I'm Loopy",
+                  textAlign: TextAlign.start,
+                  style: TextStyles.kTSNFS26W600,
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Let's find a dog For You . . .",
+                  textAlign: TextAlign.start,
+                  style: TextStyles.kTSNFS22W400,
+                )
+              ],
+            ),
+          ),
         ],
       )),
     );

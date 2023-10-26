@@ -28,7 +28,7 @@ class Shimmers {
         ));
   }
 
-  getGridShimmer({count = 10}) {
+  getGridShimmer({count = 6}) {
     return Shimmer.fromColors(
         baseColor: primary.withOpacity(0.2),
         highlightColor: primary.withOpacity(0.4),
@@ -44,7 +44,7 @@ class Shimmers {
             itemCount: count,
             scrollDirection: Axis.vertical,
             itemBuilder: (context, index) => Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(1.0),
               child: Container(
                 color: primary.withOpacity(0.4),
                 height: double.infinity,

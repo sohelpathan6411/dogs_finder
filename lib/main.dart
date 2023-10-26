@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           ),
           fontFamily: 'Oswald',
           appBarTheme: const AppBarTheme(
-              backgroundColor: colorWhite,
+              backgroundColor: bgColor,
               titleTextStyle: TextStyles.kTSNFS16W600,
               elevation: 0.0),
           floatingActionButtonTheme:

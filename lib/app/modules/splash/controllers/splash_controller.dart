@@ -25,8 +25,13 @@ class SplashController extends BaseController {
         Get.offAllNamed(
             Routes.DASHBOARD); // Navigated to dashbaord once data is fetched
       }, (r) {
-        CustomSnackbars().showErrorSnack(
-            title: 'failed_to_load'.tr, message: 'try_again'.tr);
+        if (r.toString().contains('No Network found')) {
+          CustomSnackbars().showErrorSnack(
+              title: 'no_internet'.tr, message: 'connect_wifi_data'.tr);
+        } else {
+          CustomSnackbars().showErrorSnack(
+              title: 'failed_to_load'.tr, message: 'try_again'.tr);
+        }
       });
     } catch (e) {
       CustomSnackbars()

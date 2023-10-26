@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:dogs_finder/app/modules/dashboard/controllers/dashboard_controller.dart';
 import 'package:dogs_finder/core/consts/color_consts.dart';
 import 'package:flutter/material.dart';
@@ -15,69 +13,78 @@ class BreedListView extends GetView<DashboardController> {
   Widget build(BuildContext context) {
     final breedModel = Get.find<SplashController>().breedModel;
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        if (breedModel.value.message!.isEmpty)
-          Padding(
-            padding: const EdgeInsets.all(15.0),
-            child: Text(
-              'find_by_breed'.tr,
-              textAlign: TextAlign.start,
-              style: TextStyles.kTSNFS22W600,
+    return Obx(
+      () => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          if (breedModel.value.message!.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.only(left: 15, top: 15),
+              child: Text(
+                'breeds'.tr,
+                textAlign: TextAlign.start,
+                style: TextStyles.kTSNFS18W600,
+              ),
             ),
-          ),
-        breedModel.value.message!.isEmpty
-            ? const SizedBox()
-            : Column(
-                children: [
-                  SizedBox(
-                    height: 70,
-                    child: ListView.builder(
-                      itemCount: breedModel.value.message!.entries.length,
-                      scrollDirection: Axis.horizontal,
-                      padding: const EdgeInsets.only(left: 10),
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) {
-                        var item =
-                            breedModel.value.message!.entries.elementAt(index);
-                        return InkWell(
-                          onTap: () {
-                            controller.onBreedSelection(
-                                item.key.toString(), '');
-                          },
-                          child: Center(
+          breedModel.value.message!.isEmpty
+              ? const SizedBox()
+              : Column(
+                  children: [
+                    SizedBox(
+                      height: 55,
+                      child: ListView.builder(
+                        itemCount: breedModel.value.message!.entries.length,
+                        scrollDirection: Axis.horizontal,
+                        padding: const EdgeInsets.only(left: 10),
+                        shrinkWrap: true,
+                        itemBuilder: (context, index) {
+                          var item = breedModel.value.message!.entries
+                              .elementAt(index);
+                          return Center(
                             child: Padding(
                               padding: const EdgeInsets.all(6.0),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                    color: colorWhite,
-                                    border:
-                                        Border.all(width: 1, color: primary),
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(8))),
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 16, vertical: 8),
-                                child: Text(
-                                  item.key.toString(),
-                                  style: TextStyles.kTSNFS16W600,
+                              child: InkWell(
+                                onTap: () {
+                                  controller.onBreedSelection(
+                                      item.key.toString(), '');
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      color: colorWhite,
+                                      border: Border.all(
+                                          width: item.key.toString() ==
+                                                  controller.selectedBreed.value
+                                              ? 0.8
+                                              : 0.2,
+                                          color: primary),
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(8))),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 15, vertical: 5),
+                                  child: Text(
+                                    item.key.toString(),
+                                    style: TextStyles.kTSNFS14,
+                                    textAlign: TextAlign.center,
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                        );
-                      },
+                          );
+                        },
+                      ),
                     ),
-                  ),
-                  // if (controller.selectedBreed.value.isNotEmpty)
-                  //   SubBreedListView(
-                  //       subBreedList: breedModel.value.message!.entries
-                  //           .where((element) =>
-                  //               (element.key == controller.selectedBreed.value))
-                  //           .),
-                ],
-              )
-      ],
+                    controller.selectedBreed.value.isEmpty
+                        ? const SizedBox()
+                        : SubBreedListView(
+                            subBreedList: breedModel.value.message!.entries
+                                .where((element) => (element.key ==
+                                    controller.selectedBreed.value))
+                                .first
+                                .value),
+                  ],
+                ),
+        ],
+      ),
     );
   }
 }

@@ -22,7 +22,7 @@ class RandomImageView extends GetView<DashboardController> {
               child: Text(
                 "picked_for_you".tr,
                 textAlign: TextAlign.start,
-                style: TextStyles.kTSNFS22W600,
+                style: TextStyles.kTSNFS18W600,
               ),
             ),
             controller.randomImageStatus.value == ApiStatus.LOADING
@@ -34,12 +34,15 @@ class RandomImageView extends GetView<DashboardController> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             AssetImageView(
-                              height: Get.size.height / 2.2,
+                              height: Get.size.height / 4,
                               image: loadingImage,
                             ),
-                            const Text("Could not pick, try and refresh",
+                            Text('failed_or_check_internet'.tr,
                                 textAlign: TextAlign.center,
-                                style: TextStyles.kTSNFS18W400)
+                                style: TextStyles.kTSNFS18W400),
+                            const SizedBox(
+                              height: 10,
+                            )
                           ],
                         ),
                       )

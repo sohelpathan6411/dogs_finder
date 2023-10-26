@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 
 import '../../../../core/themes/text_styles.dart';
 import '../controllers/dashboard_controller.dart';
-
 import 'breed/breed_list_view.dart';
 import 'images_list_view.dart';
 import 'random_image_view.dart';
@@ -17,13 +16,15 @@ class DashboardView extends GetView<DashboardController> {
         body: SafeArea(
       child: RefreshIndicator(
         color: primary,
-        onRefresh: () => controller.onInit(),
-        child: SingleChildScrollView(
-          physics: const AlwaysScrollableScrollPhysics(),
-          child: Padding(
-            padding: EdgeInsets.only(
-                top: Get.mediaQuery.padding.top,
-                bottom: Get.mediaQuery.padding.bottom),
+        onRefresh: () => controller.onPullToRefresh(),
+        child: Container(
+          height: Get.size.height,
+          padding: EdgeInsets.only(
+              top: Get.mediaQuery.padding.top,
+              bottom: Get.mediaQuery.padding.bottom),
+          child: SingleChildScrollView(
+            controller: controller.scrollController,
+            physics: const AlwaysScrollableScrollPhysics(),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,

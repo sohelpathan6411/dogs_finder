@@ -1,1 +1,1 @@
-const int imageCount = 10;
+const int pageSize = 6;

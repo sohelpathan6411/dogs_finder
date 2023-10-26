@@ -3,6 +3,7 @@ import 'package:dogs_finder/core/base/base_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../../core/consts/app_consts.dart';
 import '../../../../core/utils/widget_utils/custom_snack_bars.dart';
 import '../../../data/model/imges_list_model.dart';
 import '../../../data/model/random_image_model.dart';
@@ -11,12 +12,12 @@ import '../../splash/services/dogs_repo_impl.dart';
 class DashboardController extends BaseController {
   Rx<RandomImageModel> randomImage = Rx(RandomImageModel());
   Rx<ImagesListModel> imagesList = Rx(ImagesListModel());
-  ScrollController scrollController = ScrollController();
+  late ScrollController scrollController;
 
   Rx<String> selectedBreed = ''.obs;
   Rx<String> selectedSubBreed = ''.obs;
 
-  Rx<int> pageNumber = 0.obs;
+  Rx<int> pageNumber = 1.obs;
 
   @override
   Future<void> onInit() async {
@@ -25,32 +26,44 @@ class DashboardController extends BaseController {
         .value
         .message!
         .entries
+        .where((element) => ((element.value as List).isNotEmpty))
         .first
         .key;
-    pageNumber.value = 0;
+
     getRandomImage();
     getImagesList();
-    // scrollController = ScrollController()..addListener(_scrollListener);
+    scrollController = ScrollController();
+    scrollController.addListener(_scrollListener);
 
     super.onInit();
   }
 
   @override
   Future<void> onClose() async {
-    //scrollController.removeListener(_scrollListener);
+    scrollController.removeListener(_scrollListener);
     scrollController.dispose();
     super.onClose();
   }
 
-  // _scrollListener() {
-  //   if (scrollController.position.maxScrollExtent == scrollController.offset) {
-  //     if (imagesList.value.message!.length >= (imageCount * pageNumber.value) ) {
-  //       pageNumber.value+;
-  //     }
-  //   }
-  // }
+  _scrollListener() {
+    if (scrollController.position.pixels ==
+            (scrollController.position.maxScrollExtent) &&
+        imagesList.value.message != null) {
+      if (imagesList.value.message!.length > (pageSize * pageNumber.value)) {
+        pageNumber.value++;
+      }
+    }
+  }
+
+  onPullToRefresh() async {
+    pageNumber.value = 1;
+    await getRandomImage();
+    await getImagesList();
+    return true;
+  }
 
   onBreedSelection(breed, subBreed) {
+    pageNumber.value = 1;
     selectedBreed.value = breed;
     selectedSubBreed.value = subBreed;
 
@@ -67,7 +80,16 @@ class DashboardController extends BaseController {
       result.fold((l) {
         randomImage.value = l;
         randomImageStatus.value = ApiStatus.SUCCESS;
-      }, (r) => randomImageStatus.value = ApiStatus.FAIL);
+      }, (r) {
+        if (r.toString().contains('No Network found')) {
+          CustomSnackbars().showErrorSnack(
+              title: 'no_internet'.tr, message: 'connect_wifi_data'.tr);
+        } else {
+          CustomSnackbars().showErrorSnack(
+              title: 'failed_to_load'.tr, message: 'try_again'.tr);
+        }
+        randomImageStatus.value = ApiStatus.FAIL;
+      });
     } catch (e) {
       CustomSnackbars()
           .showErrorSnack(title: 'failed_to_load'.tr, message: 'try_again'.tr);
@@ -77,13 +99,18 @@ class DashboardController extends BaseController {
   getImagesList() async {
     try {
       imagesListStatus.value = ApiStatus.LOADING;
+
+      imagesList.value = ImagesListModel();
       var result = await DogsRepoImpl(dioClient).getImagesList(
           breed: selectedBreed.value, subBreed: selectedSubBreed.value);
 
       result.fold((l) {
         imagesList.value = l;
+
         imagesListStatus.value = ApiStatus.SUCCESS;
-      }, (r) => imagesListStatus.value = ApiStatus.FAIL);
+      }, (r) {
+        imagesListStatus.value = ApiStatus.FAIL;
+      });
     } catch (e) {
       CustomSnackbars()
           .showErrorSnack(title: 'failed_to_load'.tr, message: 'try_again'.tr);

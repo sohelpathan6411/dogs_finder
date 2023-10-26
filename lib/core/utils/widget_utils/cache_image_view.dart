@@ -1,7 +1,4 @@
-import 'dart:ui';
-
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:dogs_finder/core/consts/color_consts.dart';
 import 'package:dogs_finder/core/utils/widget_utils/shimmers.dart';
 import 'package:flutter/material.dart';
 
