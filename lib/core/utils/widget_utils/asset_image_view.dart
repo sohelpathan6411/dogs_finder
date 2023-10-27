@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../consts/color_consts.dart';
 import '../../consts/img_const.dart';
 
 class AssetImageView extends StatelessWidget {
@@ -31,6 +32,7 @@ class AssetImageView extends StatelessWidget {
             fit: fitBox,
             width: width,
             height: height,
+            color: primary,
           );
         },
       ),

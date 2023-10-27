@@ -13,35 +13,42 @@ class DashboardView extends GetView<DashboardController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
-      child: RefreshIndicator(
-        color: primary,
-        onRefresh: () => controller.onPullToRefresh(),
-        child: Container(
-          height: Get.size.height,
-          padding: EdgeInsets.only(
-              top: Get.mediaQuery.padding.top,
-              bottom: Get.mediaQuery.padding.bottom),
-          child: SingleChildScrollView(
-            controller: controller.scrollController,
-            physics: const AlwaysScrollableScrollPhysics(),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(left: 15),
-                  child: Text("pull_to_refresh".tr,
-                      textAlign: TextAlign.start,
-                      style: TextStyles.kTSNFS14
-                          .copyWith(color: fontColor.withOpacity(0.3))),
-                ),
-                const BreedListView(),
-                const RandomImageView(),
-                const ImagesListView(),
-              ],
+        body: RefreshIndicator(
+      color: primary,
+      onRefresh: () => controller.onPullToRefresh(),
+      child: Container(
+        height: Get.size.height,
+        padding: EdgeInsets.only(
+            top: Get.mediaQuery.padding.top,
+            bottom: Get.mediaQuery.padding.bottom),
+        child: Column(
+          children: [
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 15),
+                child: Text("pull_to_refresh".tr,
+                    textAlign: TextAlign.start,
+                    style: TextStyles.kTSNFS12
+                        .copyWith(color: textColor.withOpacity(0.3))),
+              ),
             ),
-          ),
+            const BreedListView(),
+            Expanded(
+              child: SingleChildScrollView(
+                controller: controller.scrollController,
+                physics: const AlwaysScrollableScrollPhysics(),
+                child: const Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    RandomImageView(),
+                    ImagesListView(),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     ));

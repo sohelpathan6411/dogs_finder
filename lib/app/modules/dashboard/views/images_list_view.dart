@@ -1,5 +1,5 @@
 import 'package:dogs_finder/app/modules/dashboard/controllers/dashboard_controller.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../../../../core/base/base_controller.dart';
@@ -20,33 +20,30 @@ class ImagesListView extends GetView<DashboardController> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               if (controller.selectedBreed.isNotEmpty)
-                Row(
-                  children: [
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(left: 15, top: 15, bottom: 15),
-                      child: Text(
+                Padding(
+                  padding: const EdgeInsets.only(left: 15, top: 25, bottom: 15),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
                         controller.selectedBreed.toString(),
                         textAlign: TextAlign.start,
-                        style: TextStyles.kTSNFS18W600,
+                        style: TextStyles.kTSNFS14W700,
                       ),
-                    ),
-                    if (controller.selectedSubBreed.isNotEmpty)
-                      Padding(
-                        padding: const EdgeInsets.only(
-                            right: 15, top: 15, bottom: 15),
-                        child: Text(" / ${controller.selectedSubBreed}",
+                      if (controller.selectedSubBreed.isNotEmpty)
+                        Text(" / ${controller.selectedSubBreed}",
                             textAlign: TextAlign.start,
-                            style: TextStyles.kTSNFS18W400),
-                      ),
-                    if (controller.imagesList.value.message != null &&
-                        controller.imagesList.value.message!.isNotEmpty)
-                      Text(
-                        " (${controller.imagesList.value.message!.length})",
-                        textAlign: TextAlign.start,
-                        style: TextStyles.kTSNFS16W400,
-                      ),
-                  ],
+                            style: TextStyles.kTSNFS14W700
+                                .copyWith(color: textColor)),
+                      if (controller.imagesList.value.message != null &&
+                          controller.imagesList.value.message!.isNotEmpty)
+                        Text(
+                          " (${controller.imagesList.value.message!.length})",
+                          textAlign: TextAlign.start,
+                          style: TextStyles.kTSNFS14W300,
+                        ),
+                    ],
+                  ),
                 ),
               controller.imagesListStatus.value == ApiStatus.LOADING
                   ? Shimmers().getGridShimmer()
@@ -79,11 +76,15 @@ class ImagesListView extends GetView<DashboardController> {
                                           .imagesList.value.message![index];
                                       return Padding(
                                         padding: const EdgeInsets.all(1),
-                                        child: CacheImageView(
-                                          height: double.infinity,
-                                          width: double.infinity,
-                                          imageUrl: item,
-                                          fitBox: BoxFit.cover,
+                                        child: Hero(
+                                          tag: item.toString(),
+                                          child: CacheImageView(
+                                            height: double.infinity,
+                                            width: double.infinity,
+                                            imageUrl: item,
+                                            fitBox: BoxFit.cover,
+                                            tag: item.toString(),
+                                          ),
                                         ),
                                       );
                                     },
@@ -92,7 +93,12 @@ class ImagesListView extends GetView<DashboardController> {
                                 if (controller
                                         .imagesList.value.message!.length >
                                     (pageSize * controller.pageNumber.value))
-                                  Shimmers().getGridShimmer(count: 2),
+                                  const Center(
+                                      child: Padding(
+                                    padding: EdgeInsets.only(top: 20),
+                                    child: CupertinoActivityIndicator(
+                                        color: primary),
+                                  )),
                                 if (controller
                                         .imagesList.value.message!.length <=
                                     (pageSize * controller.pageNumber.value))
@@ -103,8 +109,9 @@ class ImagesListView extends GetView<DashboardController> {
                                           left: 15, bottom: 60, top: 25),
                                       child: Text("reached_end".tr,
                                           textAlign: TextAlign.center,
-                                          style: TextStyles.kTSNFS16W400
-                                              .copyWith(color: fontColor)),
+                                          style: TextStyles.kTSNFS12.copyWith(
+                                              color:
+                                                  textColor.withOpacity(0.3))),
                                     ),
                                   )
                               ],

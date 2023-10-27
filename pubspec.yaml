@@ -85,9 +85,10 @@ flutter:
   # example:
 
   fonts:
-    - family: Oswald
+    - family: Helvetica Neue
       fonts:
-        - asset: assets/fonts/oswald/Oswald-Regular.ttf
+        - asset: assets/fonts/helvetica/HelveticaNeueMedium.ttf    
+        
 
   #
   # For details regarding fonts from package dependencies,

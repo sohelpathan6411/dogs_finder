@@ -26,8 +26,7 @@ class DashboardController extends BaseController {
         .value
         .message!
         .entries
-        /* .entries
-        .where((element) => ((element.value as List).isNotEmpty)) */
+        .where((element) => ((element.value as List).isNotEmpty))
         .first
         .key;
 

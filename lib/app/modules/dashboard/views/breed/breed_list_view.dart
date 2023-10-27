@@ -22,20 +22,21 @@ class BreedListView extends GetView<DashboardController> {
           if (breedModel.value.message!.isNotEmpty)
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 15, top: 15),
+                  padding: const EdgeInsets.only(left: 15, top: 15, bottom: 5),
                   child: Row(
                     children: [
                       Text(
                         'breeds'.tr,
                         textAlign: TextAlign.start,
-                        style: TextStyles.kTSNFS18W600,
+                        style: TextStyles.kTSNFS16W600,
                       ),
                       Text(
                         " (${breedModel.value.message!.entries.length})",
                         textAlign: TextAlign.start,
-                        style: TextStyles.kTSNFS16W400,
+                        style: TextStyles.kTSNFS14W300,
                       ),
                     ],
                   ),
@@ -54,12 +55,12 @@ class BreedListView extends GetView<DashboardController> {
                     }
                   },
                   child: Padding(
-                    padding:
-                        const EdgeInsets.only(right: 20, top: 15, left: 15),
+                    padding: const EdgeInsets.only(
+                        right: 20, top: 15, left: 15, bottom: 5),
                     child: Icon(
                       Icons.search,
-                      color: primary,
-                      size: 26.w,
+                      color: primary.withOpacity(0.7),
+                      size: 23.w,
                     ),
                   ),
                 ),
@@ -70,7 +71,7 @@ class BreedListView extends GetView<DashboardController> {
               : Column(
                   children: [
                     SizedBox(
-                      height: 55.h,
+                      height: 45.h,
                       child: ListView.builder(
                         itemCount: breedModel.value.message!.entries.length,
                         scrollDirection: Axis.horizontal,
@@ -91,18 +92,22 @@ class BreedListView extends GetView<DashboardController> {
                                   decoration: BoxDecoration(
                                       color: bgColor,
                                       border: Border.all(
-                                          width: item.key.toString() ==
+                                          width: 0.8,
+                                          color: item.key.toString() ==
                                                   controller.selectedBreed.value
-                                              ? 0.8
-                                              : 0.2,
-                                          color: fontColor),
+                                              ? primary
+                                              : textColor),
                                       borderRadius: const BorderRadius.all(
                                           Radius.circular(8))),
                                   padding: const EdgeInsets.symmetric(
                                       horizontal: 15, vertical: 5),
                                   child: Text(
                                     item.key.toString(),
-                                    style: TextStyles.kTSNFS14,
+                                    style: TextStyles.kTSNFS12.copyWith(
+                                        color: item.key.toString() ==
+                                                controller.selectedBreed.value
+                                            ? primary
+                                            : textColor),
                                     textAlign: TextAlign.center,
                                   ),
                                 ),

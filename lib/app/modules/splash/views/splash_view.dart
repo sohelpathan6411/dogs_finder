@@ -13,28 +13,31 @@ class SplashView extends GetView<SplashController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(
-            "Hi, I'm Loopy",
-            textAlign: TextAlign.start,
-            style: TextStyles.kTSNFS26W600,
-          ),
-          AssetImageView(
-            image: loadingImage,
-            width: Get.size.width / 2,
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          Text(
-            "Let's find a dog For You . . .",
-            textAlign: TextAlign.center,
-            style: TextStyles.kTSNFS22W400,
-          )
-        ],
+          child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              "Hi, I'm Loopy",
+              textAlign: TextAlign.start,
+              style: TextStyles.kTSNFS24W600.copyWith(color: titleColor),
+            ),
+            AssetImageView(
+              image: loadingImage,
+              width: Get.size.width / 2,
+              colorImg: primary,
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            Text(
+              "Let's find a dog For You . . .",
+              textAlign: TextAlign.center,
+              style: TextStyles.kTSNFS18W400.copyWith(color: textColor),
+            )
+          ],
+        ),
       )),
     );
   }

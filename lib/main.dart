@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           colorScheme:
               const ColorScheme.light(primary: primary, background: bgColor),
-          fontFamily: 'Oswald',
+          fontFamily: 'Helvetica Neue',
           appBarTheme: AppBarTheme(
               backgroundColor: bgColor,
               titleTextStyle: TextStyles.kTSNFS16W600,

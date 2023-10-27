@@ -19,21 +19,21 @@ class SubBreedListView extends GetView<DashboardController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 15, top: 5),
+                padding: const EdgeInsets.only(left: 20),
                 child: Row(
                   children: [
-                    Text('sub_breed'.tr,
-                        textAlign: TextAlign.start,
-                        style: TextStyles.kTSNFS14
-                            .copyWith(color: colorGreen.shade700)),
+                    Text(
+                      'sub_breed'.tr,
+                      textAlign: TextAlign.start,
+                      style: TextStyles.kTSNFS10.copyWith(color: textColor),
+                    ),
                     Text(controller.selectedBreed.value,
-                        textAlign: TextAlign.start,
-                        style: TextStyles.kTSNFS14W700),
+                        textAlign: TextAlign.start, style: TextStyles.kTSNFS12),
                   ],
                 ),
               ),
               SizedBox(
-                height: 55.h,
+                height: 45.h,
                 width: double.infinity,
                 child: ListView.builder(
                   itemCount: subBreedList.length,
@@ -51,23 +51,29 @@ class SubBreedListView extends GetView<DashboardController> {
                                 controller.selectedBreed.value,
                                 item.toString());
                           },
-                          child: Container(
-                            decoration: BoxDecoration(
-                                color: bgColor,
-                                border: Border.all(
-                                    width: item.toString() ==
+                          child: Obx(
+                            () => Container(
+                              decoration: BoxDecoration(
+                                  color: bgColor,
+                                  border: Border.all(
+                                      width: 0.8,
+                                      color: item.toString() ==
+                                              controller.selectedSubBreed.value
+                                          ? primary
+                                          : textColor),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(8))),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 15, vertical: 5),
+                              child: Text(
+                                item.toString(),
+                                style: TextStyles.kTSNFS12.copyWith(
+                                    color: item.toString() ==
                                             controller.selectedSubBreed.value
-                                        ? 0.8
-                                        : 0.2,
-                                    color: fontColor),
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(8))),
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 15, vertical: 5),
-                            child: Text(
-                              item.toString(),
-                              style: TextStyles.kTSNFS14,
-                              textAlign: TextAlign.center,
+                                        ? primary
+                                        : textColor),
+                                textAlign: TextAlign.center,
+                              ),
                             ),
                           ),
                         ),

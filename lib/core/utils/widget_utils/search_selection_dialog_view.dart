@@ -148,7 +148,7 @@ class _SearchDialogState extends State<SearchSelectionDialogView> {
                           vertical: 20, horizontal: 8),
                       child: Text(
                         "No data available",
-                        style: TextStyles.kTSNFS14,
+                        style: TextStyles.kTSNFS12,
                       ),
                     ),
                   ),

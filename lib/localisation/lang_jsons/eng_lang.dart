@@ -10,6 +10,6 @@ const engLang = {
   'no_sub_breed': 'No sub breed found for ',
   'no_internet': "No Internet!",
   'connect_wifi_data': "Connect wifi or turn on data",
-  'failed_or_check_internet': "Failed to load\nor\nCheck internet connection !",
+  'failed_or_check_internet': "Refresh\nor\nCheck internet connection !",
   'reached_end': 'You have reached to the end !',
 };

@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 
 import '../modules/dashboard/bindings/dashboard_binding.dart';
 import '../modules/dashboard/views/dashboard_view.dart';
+import '../modules/fullimage/bindings/fullimage_binding.dart';
+import '../modules/fullimage/views/fullimage_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
 
@@ -22,6 +24,11 @@ class AppPages {
       name: _Paths.DASHBOARD,
       page: () => const DashboardView(),
       binding: DashboardBinding(),
+    ),
+    GetPage(
+      name: _Paths.FULLIMAGE,
+      page: () => const FullimageView(),
+      binding: FullimageBinding(),
     ),
   ];
 }
