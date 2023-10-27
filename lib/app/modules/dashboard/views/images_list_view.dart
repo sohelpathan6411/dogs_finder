@@ -95,7 +95,7 @@ class ImagesListView extends GetView<DashboardController> {
                                     (pageSize * controller.pageNumber.value))
                                   const Center(
                                       child: Padding(
-                                    padding: EdgeInsets.only(top: 20),
+                                    padding: EdgeInsets.only(top: 10),
                                     child: CupertinoActivityIndicator(
                                         color: primary),
                                   )),
