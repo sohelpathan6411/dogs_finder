@@ -1,6 +1,8 @@
-SOHEL PATHAN, sohelpathan6411@gmail.com
+SOHEL PATHAN, sohelpathan6411@gmail.com  
 
-NOTE: I have used below 2 conditions for 4 api calls
+
+NOTE: I have used below 2 conditions for 4 api calls  
+
 
     String url; 
     if (subBreed == '') {
@@ -22,75 +24,107 @@ NOTE: I have used below 2 conditions for 4 api calls
 
 
 ------------------------------------------------------------
-**Tech Stack:**
-Flutter 3.10.5 • channel stable • https://github.com/flutter/flutter.git
-Tools • Dart 3.0.5 • DevTools 2.23.1
-------------------------------------------------------------
+**Tech Stack:**  
 
-**Git Repository:**
-https://github.com/sohelpathan6411/dogs_finder.git
+Flutter 3.10.5 • channel stable • https://github.com/flutter/flutter.git  
+
+Tools • Dart 3.0.5 • DevTools 2.23.1    
 
 ------------------------------------------------------------
 
-**Requirements:**
+**Git Repository:**   
 
-Android Studio
-VS Code
-Emulator/Simulator
+https://github.com/sohelpathan6411/dogs_finder.git  
+
 
 ------------------------------------------------------------
 
-**Commands to run the app:**
+**Requirements:**  
 
-flutter clean
-flutter pub get
-flutter run
 
-Create apk 
-flutter build apk
+Android Studio  
+
+VS Code  
+
+Emulator/Simulator  
+
+
+------------------------------------------------------------
+
+**Commands to run the app:**  
+
+
+flutter clean  
+
+flutter pub get  
+
+flutter run  
+
+
+Create apk   
+
+flutter build apk  
+
 
 ------------------------------------------------------------
 
 
-**Highlight feature and Modules in App Folder:**
+**Highlight feature and Modules in App Folder:**  
 
-Splash screen -  Fetching all breeds (response includes subreeds too, so no other sub breed api call required)
-Dashboard - 1. Intially default selected "breed", which is has subreeds (in our case autralian has subbreed) Note: Sub breed is not selected intially
-            2. Fetching Random image & Images list by "breed"
-            3. Once user select "sub breed" from top section , Fetching Random image & Images list by "breed" & "sub breed"
-            4. breed list is long, so added search dialog for breeds
-            5. Pull to refresh is there
-            6. Local pagination is implimented because we are getting images list at once, it may be long. Pagination helps to load images properly and gardullay as user scrolls down.
-               Logic: just increamenting itemCount for gridview, whenever user scrolls down itemCount increases and reaches to the end with Text message at the bottom.
-            7. Breeds count, images count shown
 
-            Note: I have used 3 api functions for 5 api calls
-            String url; //filter by breed OR by (breed and subbreed)
-            if (subBreed == '') {
-            url = "/breed/$breed/images/random";
-            } else {
-            url = "/breed/$breed/$subBreed/images/random";
-            }
-            
-Fullimage -  Full Screen view along with Dismiss on close icon clicked or sliding image down.
-Additionals - No internet snackbars, no internet message on dashbaord, cacheimage widgets, loading gif, Hero animations
+Splash screen -  Fetching all breeds (response includes subreeds too, so no other sub breed api call required)  
+
+Dashboard - 1. Intially default selected "breed", which is has subreeds (in our case autralian has subbreed)  
+             Note: Sub breed is not selected intially  
+             
+            2. Fetching Random image & Images list by "breed"  
+
+            3. Once user select "sub breed" from top section , Fetching Random image & Images list by "breed" & "sub breed"  
+
+            4. breed list is long, so added search dialog for breeds  
+
+            5. Pull to refresh is there  
+
+            6. Local pagination is implimented because we are getting images list at once, it may be long.   
+            Pagination helps to load images properly and gardullay as user scrolls down.  
+
+               Logic: just increamenting itemCount for gridview, whenever user scrolls down itemCount increases and reaches to the end with Text message at the bottom.  
+
+            7. Breeds count, images count shown  
+
+
+          
+Fullimage -  Full Screen view along with Dismiss on close icon clicked or sliding image down.  
+
+Additionals - No internet snackbars, no internet message on dashbaord, cacheimage widgets, loading gif, Hero animations.  
+
             
  
 ------------------------------------------------------------
 
-**libs Used:**
-  cupertino_icons: 
-  get: //state management
-  dartz:  //Either wrapper api calls
-  dio:  // Http client for rest apis calls
-  internet_connection_checker: // Data connection validator on request calls
-  shimmer: // Placeholder views
-  cached_network_image: //avoid reloading of images by cache
-  flutter_screenutil: // to manage dynamic font size based on screen size
+**libs Used:**  
+
+  cupertino_icons:   
+
+  get: //state management  
+
+  dartz:  //Either wrapper api calls  
+
+  dio:  // Http client for rest apis calls  
+  
+  internet_connection_checker: // Data connection validator on request calls  
+
+  shimmer: // Placeholder views  
+
+  cached_network_image: //avoid reloading of images by cache  
+
+  flutter_screenutil: // to manage dynamic font size based on screen size  
+
   
 ------------------------------------------------------------  
 
-**Project structure:**
+**Project structure:**  
+
 
 ```
 assets
@@ -170,16 +204,21 @@ lib
 ------------------------------------------------------------  
 
 **Views:**
-
+:-------------------------:|:-------------------------:
 ![Simulator Screen Shot - iPhone 13 Pro Max - 2023-10-27 at 23 34 44](https://github.com/sohelpathan6411/dogs_finder/assets/36534117/5671d811-8d8c-4011-b5e4-1f1c85c0e427)
-
+|
 ![Simulator Screen Shot - iPhone 13 Pro Max - 2023-10-27 at 23 35 06](https://github.com/sohelpathan6411/dogs_finder/assets/36534117/1d7de4e8-e078-4c8c-87eb-45e8167e4dbb)
 
+:-------------------------:|:-------------------------:
 ![Simulator Screen Shot - iPhone 13 Pro Max - 2023-10-27 at 23 35 18](https://github.com/sohelpathan6411/dogs_finder/assets/36534117/6fac4404-feb0-47a0-a819-0c4df6d76380)
-
+|
 ![Simulator Screen Shot - iPhone 13 Pro Max - 2023-10-27 at 23 35 32](https://github.com/sohelpathan6411/dogs_finder/assets/36534117/80a0b8f6-aafb-4e85-9b82-020c7451a923)
-
+:-------------------------:
 ![Simulator Screen Shot - iPhone 13 Pro Max - 2023-10-27 at 23 39 25](https://github.com/sohelpathan6411/dogs_finder/assets/36534117/db54c94f-efa7-412e-a79f-a69c530aeb95)
+
+
+
+
 
 
 
