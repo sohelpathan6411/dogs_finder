@@ -91,6 +91,8 @@ Additionals - No internet snackbars, no internet message on dashbaord, cacheimag
 ------------------------------------------------------------  
 
 **Project structure:**
+
+```
 assets
    |-- fonts
    |   |-- helvetica
@@ -163,7 +165,7 @@ lib
    |   |   |-- eng_lang.dart
    |   |-- languages.dart
    |-- main.dart
-
+```
   
 ------------------------------------------------------------  
 
