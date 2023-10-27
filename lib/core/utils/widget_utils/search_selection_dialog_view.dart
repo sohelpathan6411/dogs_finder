@@ -50,9 +50,10 @@ class _SearchDialogState extends State<SearchSelectionDialogView> {
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Container(
             width: double.infinity,
+            color: bgColor,
             padding: const EdgeInsets.all(18.0),
             child: Text(widget.title,
-                textAlign: TextAlign.center, style: TextStyles.kTSNFS22W600),
+                textAlign: TextAlign.center, style: TextStyles.kTSNFS18W400),
           ),
           Container(
             padding:
@@ -65,7 +66,10 @@ class _SearchDialogState extends State<SearchSelectionDialogView> {
                     child: TextField(
                       controller: _searchController,
                       autofocus: true,
+                      style: TextStyles.kTSNFS12.copyWith(color: textColor),
                       decoration: InputDecoration(
+                          hintStyle: TextStyles.kTSNFS12
+                              .copyWith(color: textColor.withOpacity(0.7)),
                           contentPadding: const EdgeInsets.symmetric(
                               horizontal: 20, vertical: 5),
                           border: OutlineInputBorder(
@@ -132,7 +136,7 @@ class _SearchDialogState extends State<SearchSelectionDialogView> {
                         title: Text(
                           widget.filteredItems[index],
                           textAlign: TextAlign.center,
-                          style: TextStyles.kTSNFS16W400,
+                          style: TextStyles.kTSNFS12.copyWith(color: textColor),
                         ),
                         onTap: () {
                           // Do something when an item is selected
@@ -148,7 +152,7 @@ class _SearchDialogState extends State<SearchSelectionDialogView> {
                           vertical: 20, horizontal: 8),
                       child: Text(
                         "No data available",
-                        style: TextStyles.kTSNFS12,
+                        style: TextStyles.kTSNFS12.copyWith(color: textColor),
                       ),
                     ),
                   ),

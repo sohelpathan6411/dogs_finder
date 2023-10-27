@@ -18,15 +18,14 @@ class DashboardView extends GetView<DashboardController> {
       onRefresh: () => controller.onPullToRefresh(),
       child: Container(
         height: Get.size.height,
-        padding: EdgeInsets.only(
-            top: Get.mediaQuery.padding.top,
-            bottom: Get.mediaQuery.padding.bottom),
+        padding: EdgeInsets.only(bottom: Get.mediaQuery.padding.bottom),
         child: Column(
           children: [
             Align(
               alignment: Alignment.centerLeft,
               child: Padding(
-                padding: const EdgeInsets.only(left: 15),
+                padding: EdgeInsets.only(
+                    left: 15, top: Get.mediaQuery.padding.top + 15),
                 child: Text("pull_to_refresh".tr,
                     textAlign: TextAlign.start,
                     style: TextStyles.kTSNFS12

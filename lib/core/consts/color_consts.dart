@@ -9,7 +9,12 @@ const titleColor = Colors.brown;
 const textColor = Colors.black54;
 const bgColor = Colors.white; */
 
-const primary = Colors.deepPurple;
+/* const primary = Colors.deepPurple;
 const titleColor = Colors.deepPurple;
 const textColor = Colors.black54;
-const bgColor = Colors.white;
+const bgColor = Colors.white; */
+
+const primary = Colors.greenAccent;
+const titleColor = Colors.greenAccent;
+const textColor = Colors.white;
+const bgColor = Colors.black;

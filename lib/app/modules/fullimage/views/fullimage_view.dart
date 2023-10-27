@@ -14,7 +14,7 @@ class FullimageView extends GetView<FullimageController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: Get.mediaQuery.padding.top + 30,
+        toolbarHeight: Get.mediaQuery.padding.top + 40,
         automaticallyImplyLeading: false,
         actions: [
           InkWell(
@@ -24,7 +24,7 @@ class FullimageView extends GetView<FullimageController> {
               child: Icon(
                 Icons.close,
                 color: primary.withOpacity(0.7),
-                size: 26.w,
+                size: 22.w,
               ),
             ),
           ),
@@ -34,7 +34,7 @@ class FullimageView extends GetView<FullimageController> {
           ? const SizedBox()
           : Dismissible(
               direction: DismissDirection.down,
-              onUpdate: (_) {
+              onResize: () {
                 Get.back();
               },
               key: UniqueKey(),

@@ -21,7 +21,7 @@ class SplashView extends GetView<SplashController> {
             Text(
               "Hi, I'm Loopy",
               textAlign: TextAlign.start,
-              style: TextStyles.kTSNFS24W600.copyWith(color: titleColor),
+              style: TextStyles.kTSNFS24W600.copyWith(color: textColor),
             ),
             AssetImageView(
               image: loadingImage,
