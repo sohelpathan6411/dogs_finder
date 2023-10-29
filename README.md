@@ -10,13 +10,13 @@ NOTE: I have used below 2 conditions for 4 api calls
         url = "/breed/$breed/images/random";
     } else {
         //Random image by breed and sub breed
-        url = "/breed/$breed/$subBreed/images";
+        url = "/breed/$breed/$subBreed/images/random";
     }
     
     String url; 
     if (subBreed == '') {
         //Images list by breed
-        url = "/breed/$breed/images/random";
+        url = "/breed/$breed/images";
     } else {
         //Images list by breed and sub breed
         url = "/breed/$breed/$subBreed/images";
